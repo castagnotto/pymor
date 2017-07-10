@@ -1,6 +1,6 @@
 -r requirements.txt
 PyQt5 ; python_version >= "3.5"
-https://bitbucket.org/pauloh/pyevtk/get/tip.tar.gz
+https://bitbucket.org/renemilk/pyevtk/get/tip.tar.gz
 ipyparallel
 ipython>=3.0
 matplotlib
