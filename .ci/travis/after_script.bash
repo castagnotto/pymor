@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -e
+
 PYMOR_ROOT="$(cd "$(dirname ${BASH_SOURCE[0]})" ; cd ../../ ; pwd -P )"
 cd "${PYMOR_ROOT}"
 
- ./.ci/travis/init_sshkey $encrypted_aaee34775583_key $encrypted_aaee34775583_iv .ci/travis/logs_deploy_key
+ ./.ci/travis/init_sshkey.bash $encrypted_aaee34775583_key $encrypted_aaee34775583_iv .ci/travis/logs_deploy_key
 
 TESTLOGS_URL="git@github.com:pymor/pymor-testlogs.git"
 LOGS_DIR="${HOME}/pymor_logs"
