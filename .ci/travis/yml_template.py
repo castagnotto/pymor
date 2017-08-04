@@ -25,8 +25,8 @@ script:
     - ${DOCKER_RUN} /src/.ci/travis/script.bash
 
 # runs independent of 'script' failure/success
-#after_script:
-    #- ${DOCKER_RUN} /src/.ci/travis/after_script.bash
+after_script:
+    - ${DOCKER_RUN} /src/.ci/travis/after_script.bash
 
 notifications:
   email:
