@@ -17,6 +17,7 @@ if [ "x${TRAVIS_PULL_REQUEST}" != "xfalse" ] ; then
 fi
 PYMOR_VERSION=$(python -c 'import pymor;print(pymor.__version__)')
 RESULT_FN=test_results.xml
+PY_VER=$(python -c 'import platform;print(platform.python_version())')
 
 if [ "${PYTEST_MARKER}" == "None" ] ; then
 
@@ -29,7 +30,7 @@ if [ "${PYTEST_MARKER}" == "None" ] ; then
         git checkout -b ${BRANCH}
     fi
 
-    TARGET_DIR=${LOGS_DIR}/${BRANCH}/${DOCKER_TAG}/${PYMOR_VERSION}/
+    TARGET_DIR=${LOGS_DIR}/${BRANCH}/${PY_VER}/${PYMOR_VERSION}/
     [[ -d "${TARGET_DIR}" ]]  || mkdir -p ${TARGET_DIR}
     cp ${PYMOR_ROOT}/${RESULT_FN} ${PYMOR_ROOT}/test_timings.csv ${TARGET_DIR}/
     cat ${ENV_FILE} | \grep -v encrypted | \grep -v TOKEN | sort > ${TARGET_DIR}/env
