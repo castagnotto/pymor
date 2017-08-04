@@ -31,7 +31,8 @@ if [ "${PYTEST_MARKER}" == "None" ] ; then
 
     TARGET_DIR=${LOGS_DIR}/${BRANCH}/${DOCKER_TAG}/${PYMOR_VERSION}/
     [[ -d "${TARGET_DIR}" ]]  && mkdir -p ${TARGET_DIR}
-    cp ${ENV_FILE} ${PYMOR_ROOT}/${RESULT_FN} ${PYMOR_ROOT}/test_timings.csv ${TARGET_DIR}/
+    cp ${PYMOR_ROOT}/${RESULT_FN} ${PYMOR_ROOT}/test_timings.csv ${TARGET_DIR}/
+    cat ${ENV_FILE} | \grep -v encrypted | \grep -v TOKEN | sort > ${TARGET_DIR}/env
 
     git add ${TARGET_DIR}/*
     git config user.name "pyMOR Bot"
